@@ -1,0 +1,52 @@
+<div class="container mt-3">
+  <ng-container *ngIf="users | async as listUsers; else failureOrLading">
+    <div class="card shadow">
+      <div class="card-header text-primary text-center">
+        <b>Liste des machines virtuelles</b>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+          <tr class="text-primary">
+            <th style="text-align:center">ID</th>
+            <th style="text-align:center">USERNAME</th>
+            <th style="text-align:center">ENABLED</th>
+            <!--<th style="text-align:center">ROLE I</th>
+            <th style="text-align:center">ROLE II</th>-->
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let u of users | async">
+            <td style="text-align:center" >{{u.userId}}</td>
+            <td style="text-align:center" class="bg-light">{{u.username}}</td>
+            <td style="text-align:center" >{{u.enabled}}</td>
+            <!--<td style="text-align:center" class="bg-light">{{getRoleOne(u)}}</td>
+            <td style="text-align:center">{{getRoleTwo(u)}}</td>-->
+            <td class="bg-light">
+              <button (click)="gotoUpdateUser(u)" class="btn btn-outline-primary">
+                <i class="bi bi-input-cursor-text"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #failureOrLading>
+    <ng-container *ngIf="errorMessage; else loading">
+      <div class="text-danger">
+        {{errorMessage}}
+      </div>
+    </ng-container>
+    <ng-template #loading>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+      </div>
+
+      Chargement ...
+    </ng-template>
+  </ng-template>
+</div>

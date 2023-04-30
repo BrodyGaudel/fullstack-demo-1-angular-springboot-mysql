@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="card col-md-6 offset-3 mt-3 shadow">
+    <div class="card-header">Ajouter un nouvel utilisateur</div>
+    <div class="card-body">
+      <form [formGroup]="addUserFormGroup" (ngSubmit)="handleSaveUser()">
+
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input type="text" formControlName="username" class="form-control">
+          <span class="text-danger" *ngIf="addUserFormGroup.controls['username'].touched
+            && addUserFormGroup.controls['username'].errors
+            && addUserFormGroup.controls['username'].errors!['required']">
+            Le nombre d'utilisateur est obligatoire.
+          </span>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="text" formControlName="password" class="form-control">
+          <span class="text-danger" *ngIf="addUserFormGroup.controls['password'].touched
+            && addUserFormGroup.controls['password'].errors
+            && addUserFormGroup.controls['password'].errors!['required']">
+            Le nombre d'utilisateur est obligatoire.
+          </span>
+        </div>
+
+        <button class="btn btn-info">Enregistrer</button>
+      </form>
+    </div>
+  </div>
+</div>

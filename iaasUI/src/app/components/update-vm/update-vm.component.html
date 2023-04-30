@@ -1,0 +1,116 @@
+<div class="container mt-3">
+  <div class="card col-md-6 offset-3 shadow">
+    <div class="card-header text-primary text-center">
+      <b>Modification de la VM</b>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="updateFormGroup" (ngSubmit)="handleUpdateVm()">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" formControlName="name" class="form-control" [(ngModel)]= "model.name">
+              <span class="text-danger" *ngIf="updateFormGroup.controls['name'].touched
+                && updateFormGroup.controls['name'].errors
+                && updateFormGroup.controls['name'].errors!['required']">
+                  Le nom de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+              <input type="text" formControlName="description" class="form-control" [(ngModel)]= "model.description">
+              <span class="text-danger" *ngIf="updateFormGroup.controls['description'].touched
+                && updateFormGroup.controls['description'].errors
+                && updateFormGroup.controls['description'].errors!['required']">
+                  La description de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">RAM (Go)</label>
+              <input type="number" formControlName="memory" class="form-control" [(ngModel)]= "model.memory">
+              <span class="text-danger" *ngIf="updateFormGroup.controls['memory'].touched
+                && updateFormGroup.controls['memory'].errors
+                && updateFormGroup.controls['memory'].errors!['required']">
+                  La ram de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nom du système d'exploitation</label>
+              <input type="text" formControlName="osname" class="form-control" [(ngModel)]= "model.operatingSystem.name">
+              <span class="text-danger" *ngIf="updateFormGroup.controls['osname'].touched
+                && updateFormGroup.controls['osname'].errors
+                && updateFormGroup.controls['osname'].errors!['required']">
+                  La nom de l'OS de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Type du système d'exploitation</label>
+              <select formControlName="ostype" class="form-control" [(ngModel)]= "model.operatingSystem.type">
+                <option>LINUX</option>
+                <option>WINDOWS</option>
+              </select>
+              <span class="text-danger" *ngIf="updateFormGroup.controls['ostype'].touched
+                && updateFormGroup.controls['ostype'].errors
+                && updateFormGroup.controls['ostype'].errors!['required']">
+                  La ram de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label class="form-label">Stockage (Go)</label>
+              <input type="number" formControlName="stockage" class="form-control" [(ngModel)]= "model.hardDisk.stockage">
+              <span class="text-danger" *ngIf="updateFormGroup.controls['stockage'].touched
+                && updateFormGroup.controls['stockage'].errors
+                && updateFormGroup.controls['stockage'].errors!['required']">
+                  La nom de l'OS de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Type de réseaux</label>
+              <select formControlName="nettype" class="form-control" [(ngModel)]= "model.network.type">
+                <option>BRIDGED_NETWORKING</option>
+                <option>NETWORK_ADDRESS_TRANSLATION</option>
+                <option>NO_NETWORK</option>
+              </select>
+              <span class="text-danger" *ngIf="updateFormGroup.controls['nettype'].touched
+                && updateFormGroup.controls['nettype'].errors
+                && updateFormGroup.controls['nettype'].errors!['required']">
+                  Le type de réseaux de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Adresse IP :</label>
+              <input type="text" formControlName="netip" class="form-control" [(ngModel)]= "model.network.ipAddress">
+              <span class="text-danger" *ngIf="updateFormGroup.controls['netip'].touched
+                && updateFormGroup.controls['netip'].errors
+                && updateFormGroup.controls['netip'].errors!['required']">
+                  L'adresse ip de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nombre de processeurs :</label>
+              <input type="number" formControlName="cpu" class="form-control" [(ngModel)]= "model.processors.numberOfProcessors">
+              <span class="text-danger" *ngIf="updateFormGroup.controls['cpu'].touched
+                && updateFormGroup.controls['cpu'].errors
+                && updateFormGroup.controls['cup'].errors!['required']">
+                  Le nombre de processeurs de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nombre de coeur par processeur :</label>
+              <input type="number" formControlName="cpucore" class="form-control" [(ngModel)]= "model.processors.numberOfCorPerProcessors">
+              <span class="text-danger" *ngIf="updateFormGroup.controls['cpucore'].touched
+                && updateFormGroup.controls['cpucore'].errors
+                && updateFormGroup.controls['cupcore'].errors!['required']">
+                  Le nombre de coeur par processeur de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+          </div>
+
+        </div>
+        <button [disabled]="!updateFormGroup.valid" class="btn btn-primary">Valider les modifications</button>
+      </form>
+    </div>
+  </div>
+</div>

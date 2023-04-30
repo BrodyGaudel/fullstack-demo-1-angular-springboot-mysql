@@ -1,0 +1,118 @@
+<div class="container mt-3">
+  <div class="card shadow">
+    <div class="card-header text-center text-primary">
+      <b>Création d'une nouvelle machine virtuelle</b>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="createFormGroup" (ngSubmit)="handleCreateVm()">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" formControlName="name" class="form-control">
+              <span class="text-danger" *ngIf="createFormGroup.controls['name'].touched
+                && createFormGroup.controls['name'].errors
+                && createFormGroup.controls['name'].errors!['required']">
+                  Le nom de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+              <input type="text" formControlName="description" class="form-control" >
+              <span class="text-danger" *ngIf="createFormGroup.controls['description'].touched
+                && createFormGroup.controls['description'].errors
+                && createFormGroup.controls['description'].errors!['required']">
+                  La description de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">RAM (Go)</label>
+              <input type="number" formControlName="memory" class="form-control">
+              <span class="text-danger" *ngIf="createFormGroup.controls['memory'].touched
+                && createFormGroup.controls['memory'].errors
+                && createFormGroup.controls['memory'].errors!['required']">
+                  La ram de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label class="form-label">Nom du système d'exploitation</label>
+              <input type="text" formControlName="osname" class="form-control">
+              <span class="text-danger" *ngIf="createFormGroup.controls['osname'].touched
+                && createFormGroup.controls['osname'].errors
+                && createFormGroup.controls['osname'].errors!['required']">
+                  La nom de l'OS de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Type du système d'exploitation</label>
+              <select formControlName="ostype" class="form-control">
+                <option>LINUX</option>
+                <option>WINDOWS</option>
+              </select>
+              <span class="text-danger" *ngIf="createFormGroup.controls['ostype'].touched
+                && createFormGroup.controls['ostype'].errors
+                && createFormGroup.controls['ostype'].errors!['required']">
+                  La ram de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label class="form-label">Stockage (Go)</label>
+              <input type="number" formControlName="stockage" class="form-control">
+              <span class="text-danger" *ngIf="createFormGroup.controls['stockage'].touched
+                && createFormGroup.controls['stockage'].errors
+                && createFormGroup.controls['stockage'].errors!['required']">
+                  La nom de l'OS de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Type de réseaux</label>
+              <select formControlName="nettype" class="form-control">
+                <option>BRIDGED_NETWORKING</option>
+                <option>NETWORK_ADDRESS_TRANSLATION</option>
+                <option>NO_NETWORK</option>
+              </select>
+              <span class="text-danger" *ngIf="createFormGroup.controls['nettype'].touched
+                && createFormGroup.controls['nettype'].errors
+                && createFormGroup.controls['nettype'].errors!['required']">
+                  Le type de réseaux de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Adresse IP :</label>
+              <input type="text" formControlName="netip" class="form-control">
+              <span class="text-danger" *ngIf="createFormGroup.controls['netip'].touched
+                && createFormGroup.controls['netip'].errors
+                && createFormGroup.controls['netip'].errors!['required']">
+                  L'adresse ip de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nombre de processeurs :</label>
+              <input type="number" formControlName="cpu" class="form-control">
+              <span class="text-danger" *ngIf="createFormGroup.controls['cpu'].touched
+                && createFormGroup.controls['cpu'].errors
+                && createFormGroup.controls['cup'].errors!['required']">
+                  Le nombre de processeurs de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nombre de coeur par processeur :</label>
+              <input type="number" formControlName="cpucore" class="form-control" >
+              <span class="text-danger" *ngIf="createFormGroup.controls['cpucore'].touched
+                && createFormGroup.controls['cpucore'].errors
+                && createFormGroup.controls['cupcore'].errors!['required']">
+                  Le nombre de coeur par processeur de la machine virtuelle est obligatoire.
+               </span>
+            </div>
+          </div>
+        </div>
+        <button [disabled]="!createFormGroup.valid" class="btn btn-primary">créer</button>
+      </form>
+    </div>
+  </div>
+</div>
